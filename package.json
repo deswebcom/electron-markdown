@@ -23,7 +23,7 @@
     "webpack-cli": "^5.1.1"
   },
   "dependencies": {
-    "@dile/dile-pages": "^2.0.4",
+    "@dile/dile-pages": "^2.1.0",
     "@dile/dile-tabs": "^3.0.5",
     "lit": "^2.7.4"
   }

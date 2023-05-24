@@ -16,9 +16,17 @@ class DwEditor extends FormFieldMixin(LitElement) {
   static get styles() {
     return [formStyles, css`
       :host {
-        display: block;
+        display: flex;
+        width: 100%;
+        flex-grow: 1;
+        align-items: stretch;
+        justify-content: stretch
       }
       div {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        flex-grow: 1px;
         padding: 10px;
         border-radius: 6px;
         border: 1px solid var(--primary-color);
@@ -35,12 +43,16 @@ class DwEditor extends FormFieldMixin(LitElement) {
       }
       dw-editor-toolbar {
         margin-bottom: 10px;
+        width: 100%;
+      }
+      ::slotted(*) {
+        flex-grow: 1;
+        height: 100%;
       }
     `];
   }
   render() {
     return html`
-      <span class="label">${this.label}</span>
       <div>
         <dw-editor-toolbar @editor-action="${this.doAction}"></dw-editor-toolbar>
         <slot></slot>
@@ -61,7 +73,6 @@ class DwEditor extends FormFieldMixin(LitElement) {
     return {
       content: { type: String },
       name: { type: String },
-      label: { type: String }
     };
   }
 
