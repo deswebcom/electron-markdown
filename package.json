@@ -1,0 +1,29 @@
+{
+  "name": "electron-markdown",
+  "version": "0.0.1",
+  "description": "Markdown code editor and HTML converter.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron .",
+    "build:front": "webpack --mode production",
+    "dev:front": "webpack --mode development --watch"
+  },
+  "keywords": [
+    "markdown",
+    "editor",
+    "html"
+  ],
+  "author": "Miguel Angel Alvarez",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^24.3.1",
+    "webpack": "^5.83.1",
+    "webpack-cli": "^5.1.1"
+  },
+  "dependencies": {
+    "@dile/dile-pages": "^2.0.4",
+    "@dile/dile-tabs": "^3.0.5",
+    "lit": "^2.7.4"
+  }
+}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Markdown to HTML Editor</title>
+  <style>
+    body {
+      font-family: sans-serif;
+    }
+    #editor {
+      width: 100%;
+      height: 300px;
+  
+    }
+  </style>
+</head>
+<body>
+  <electron-markdown>
+    <div id="editor"></div>
+  </electron-markdown>
+ 
+  <script src="./dist/ace-builds/ace.js"></script>
+  <script>
+    var editor = ace.edit("editor", {
+      showGutter: false,
+      autoScrollEditorIntoView: false,
+      wrap: true,
+      showPrintMargin: false,
+    });
+    window.dw = {
+      editor: editor,
+    }
+  </script>
+  <script src="./dist/index.js"></script>
+</body>
+</html>
