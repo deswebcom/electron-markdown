@@ -1,5 +1,5 @@
 {
-  "name": "electron-markdown",
+  "name": "markdown-2-html",
   "version": "0.0.1",
   "description": "Markdown code editor and HTML converter.",
   "main": "main.js",
