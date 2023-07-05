@@ -34,16 +34,22 @@ class DwEditorToolbar extends LitElement {
   get undoIcon() {
     return html`<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M12.5 8c-2.65 0-5.05.99-6.9 2.6L2 7v9h9l-3.62-3.62c1.39-1.16 3.16-1.88 5.12-1.88 3.54 0 6.55 2.31 7.6 5.5l2.37-.78C21.08 11.03 17.15 8 12.5 8z"/></svg>`;
   }
-
-
+  get codeBlockIcon() {
+    return html`<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m379-343 44-44-93-93 92-92-44-44-136 136 137 137Zm202 0 137-137-137-137-44 44 93 93-93 93 44 44ZM180-120q-24 0-42-18t-18-42v-600q0-24 18-42t42-18h600q24 0 42 18t18 42v600q0 24-18 42t-42 18H180Zm0-60h600v-600H180v600Zm0-600v600-600Z"/></svg>`;
+  }
+  get linkIcon() {
+    return html`<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M450-280H280q-83 0-141.5-58.5T80-480q0-83 58.5-141.5T280-680h170v60H280q-58.333 0-99.167 40.765-40.833 40.764-40.833 99Q140-422 180.833-381q40.834 41 99.167 41h170v60ZM325-450v-60h310v60H325Zm185 170v-60h170q58.333 0 99.167-40.765 40.833-40.764 40.833-99Q820-538 779.167-579 738.333-620 680-620H510v-60h170q83 0 141.5 58.5T880-480q0 83-58.5 141.5T680-280H510Z"/></svg>`;
+  }
 
   render() {
     return html`
       <dw-editor-button label="Bold" actionName="bold" .iconTemplate=${this.boldIcon}></dw-editor-button>
       <dw-editor-button label="Italic" actionName="italic" .iconTemplate=${this.italicIcon}></dw-editor-button>
       <dw-editor-button label="Heading" actionName="heading" .iconTemplate=${this.headingIcon}></dw-editor-button>
+      <dw-editor-button label="Link" actionName="link" .iconTemplate=${this.linkIcon}></dw-editor-button>
       <dw-editor-button label="List" actionName="list" .iconTemplate=${this.listIcon}></dw-editor-button>
       <dw-editor-button label="Code" actionName="code" .iconTemplate=${this.codeIcon}></dw-editor-button>
+      <dw-editor-button label="Code" actionName="codeBlock" .iconTemplate=${this.codeBlockIcon}></dw-editor-button>
       <dw-editor-button label="Undo" actionName="undo" .iconTemplate=${this.undoIcon}></dw-editor-button>
       <dw-editor-button label="Redo" actionName="redo" .iconTemplate=${this.redoIcon}></dw-editor-button>
     `;

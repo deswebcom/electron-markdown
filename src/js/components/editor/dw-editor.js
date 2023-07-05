@@ -110,8 +110,14 @@ class DwEditor extends FormFieldMixin(LitElement) {
       case 'list':
         this.doLines('- ');
         break;
-      case 'code':
+      case 'codeBlock':
         this.wrapLines('```');
+        break;
+      case 'code':
+        this.doWrap('`');
+        break;
+      case 'link':
+        this.doLink();
         break;
       case 'undo':
         this.undo();
@@ -215,6 +221,12 @@ class DwEditor extends FormFieldMixin(LitElement) {
       // var ulFin = (index == lineas.length - 1)? '\n</' + list + '>' : '';
       document.replace(range, prefix + linea);
     }, this);
+  }
+
+  doLink() {
+    var document = this.getDocument();
+    var range = this.getRange();
+    document.replace(range, `[` + this.getTextRange() +`]()`);
   }
 }
 
