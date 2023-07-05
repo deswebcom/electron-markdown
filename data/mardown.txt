@@ -1,0 +1,45 @@
+En esta era tecnológica en la que vivimos somos beneficiarios de innumerables ventajas y cambios positivos en nuestro día a día. Algunas ramas de la medicina han evolucionado como nunca antes lo habían hecho, disponemos de dispositivos en nuestros hogares que nos hacen la vida más fácil, e incluso hemos conseguido crear un mundo un poco más sostenible gracias a los avances tecnológicos, con hitos como el coche híbrido / eléctrico, por ejemplo. 
+
+Pero como todo en la vida, **estos avances tienen también su cara más oscura**. La tecnología ha traído consigo unas figuras que han ido ganando peso en los últimos años y que aprovechan los medios actuales para sacar partido ilícito de las tecnología. Sí, estamos hablando de los bandidos informáticos, a los que **algunos desinformados denominan "Hackers"**. Los bandidos informáticos o ladrones digitales son temidos por empresas y particulares, y  han provocado más de un desastre con pérdidas cuantiosas. 
+
+En realidad el término hacker hace referencia a “un experto de las nuevas tecnologías que [trata de romper los límites para crear algo superior](https://es.wikipedia.org/wiki/Hacker)”. Sin embargo, este concepto se ha ido degradando debido a un mal uso por parte de empresas y la prensa poco habituada a tratar temas tecnológicos. Como consecuencia, en el ideario popular en estos momentos el concetos de hacker es incorrectamente entendido como un bandido digital que puede llevarnos incluso a la ruina. De la mano de los bandidos informáticos conocimos el término *phishing*, una auténtica pesadilla que ya se ha llevado miles de **millones de víctimas por delante**. 
+
+Este asunto es de vital importancia y es imprescindible estar al día de las últimas noticias al respecto, porque mañana puede llegarte un e-mail intentando defraudarte. Y sí, tienes que estar preparado. Así que aunque ya se ha escrito bastante sobre [qué es el phishing]() queremos daros nuestras propias consideraciones y explicar cómo protegerte de él.
+
+## Pero ¿qué es exactamente el phishing?
+
+Aunque no lo parezca, **el término phishing lleva en nuestras vidas desde mediados de los 90**, y sin duda llegó para quedarse. Para que nos entendamos, el phishing es literalmente un fraude, con todas las letras, y consiste en la suplantación de identidad, enviando comunicaciones que hacen pasar por entidades confiables. Los mensajes de **phishing pueden llegar a través de envíos de correos electrónicos o en alguna ocasión a través de SMS** y tienen como objetivo recabar información personal de las víctimas, como contraseñas o cuentas bancarias. 
+
+Estas comunicaciones suelen contener **enlaces que te dirigen a un sitio web fraudulento**, que simula ser la página de un banco o de otra organización lícita, donde te invitan a introducir información personal sensible. Si cometes el error de proporcionarles lo que quieren, lamentablemente, has caído en las redes del phishing.
+
+## Cómo detectar el Phishing
+
+Es muy importante entonces que sepamos detectar este tipo de correos electrónicos o SMS fraudulentos. A veces es complicado, porque los atacantes son muy ingeniosos y juegan con varios factores a su favor, como la ignorancia de las personas, la ingeniería social y su capacidad de llegar a millones de personas. Pero con un poco de atención y aplicando siempre una dosis de desconfianza es posible detectar los casos de phishing. 
+
+En general, no debes clicar ningún enlace incluido en correos electrónicos sospechosos, pero si lo hicieras, jamás introduzcas tus datos personales o bancarios en la página web a la que accedas. Te avisamos desde ya que las páginas web fraudulentas suelen estar muy conseguidas, imitando al detalle las oficiales, y es muy fácil que caigas en la trampa. Por eso, si tienes que acceder a una página web en concreto, mejor teclearla desde tu navegador habitual. Es lo más seguro.
+
+Para mejorar tu seguridad queremos aportarte un checklist de elementos en los que fijarte, para que te salten las alarmas cuando entre un correo sospechoso a tu bandeja de entrada.
+
+- Para empezar, este tipo de correos suelen contener errores ortográficos, y esto es algo que no ocurre cuando la información la han enviado organismos públicos o entidades privadas importantes. No te fíes si ves erratas. 
+- En el phishing es habitual aportar un tono de amenaza en sus comunicados. Intentan llegar a sus usuarios a través del miedo, como por ejemplo con temas relacionados con Hacienda o algún pago bancario que, si no es abonado, tendrá unas consecuencias terribles. Las personas que están detrás de estos ataques saben cuáles son los puntos débiles de la población y los utilizan para captarlos con mayor facilidad. 
+- Desconfía cuando soliciten datos sensibles. Ten muy presente que los organismos públicos o compañías nunca te pedirán datos privados por estas vías. Cuando una entidad pública o compañía privada importante necesita ciertos datos sensibles, no te los solicita por correo electrónico o SMS. Utilizan otras vías mucho más seguras para mantener tu privacidad y blindar tus datos lo máximo posible.
+- Desconfía si no estás esperando recibir mensajes de cualquier entidad. Pero desconfía también aunque parezca que tienen relación con alguna actividad que hayas realizado recientemente!!! Por ejemplo, aunque estés esperando recibir un paquete del extranjero, si recibes un mensaje que parece ser de Correos solicitando pagar tasas de aduana, desconfía igualmente.
+- Analiza las URL de los enlaces que hay en los email o los SMS. Tienen que llevarte exactamente a las páginas oficiales de las entidades. Evita pulsar los enlaces y si es posible no te fíes del texto del enlace y haz clic en ellos con el botón derecho para inspeccionar la URL a la que dirigen. Ten en cuenta que muchas veces las URL se parecen a las páginas oficiales y si no haces un doble chequeo puede que parezcan la misma sin serlo en realidad.
+- Estos correos electrónicos suelen ir acompañados de documentos adjuntos. No los descargues si el e-mail te parece sospechoso.
+- ¿El correo electrónico del remitente es el oficial? Revisa este punto, porque en notificaciones fraudulentas la dirección suele ser distinta.
+
+Protegerse de este tipo de ataques es muy posible. Además de todos los consejos anteriores debes tener en cuenta otros aspectos importantes sobre los equipos informáticos con los que trabajas:
+
+- Debes siempre tener actualizados tus dispositivos te ayudará a estar más protegido frente a estos ataques. En cada actualización, las aplicaciones y en general el sistema operativo mejora y es más seguro que en versiones anteriores.
+- Evita introducir informaciones sensibles en ordenadores en los que no confíes, como los de los cibercafés.
+- Utiliza sistemas antispam, ya que éstos eliminarán la mayoría de las amenazas sin que lleguen a tu bandeja de entrada.
+
+## Qué hacer si has caído en el phishing
+
+Por supuesto, ante la más mínima sospecha y si has caído en la trampa de algún bandido electrónico, debes ponerte en contacto cuanto antes con la entidad oficial pertinente o compañía privada en cuestión. Por ejemplo, si has introducido la tarjeta bancaria en alguna página que no es completamente confiable, debes ponerte en contacto con el banco para anular las últimas acciones y dar de baja esa tarjeta para evitar que los males sean todavía mayores.
+
+En cualquier caso, tanto si tienes dudas como si piensas que has sido estafado, ponte en contacto con la [Policía Nacional](https://www.policia.es/_es/denuncias.php) o la [Guardia Civil](https://www.guardiacivil.es/es/servicios/atencionciudadano_1/) sin dudarlo. 
+
+Hoy en día el phishing puede mostrarse de muchas formas, ya que se encuentra en constante cambio y evoluciona día tras día, introduciendo nuevas formas de estafar a los usuarios. Así pues, tanto empresas como particulares tienen la obligación de adoptar soluciones que les ofrezcan toda la seguridad posible con métodos anti-phishing. 
+
+Las consecuencias de estos ataques pueden ser considerables. A veces nos pueden robar datos con los que llevar a la ruina a una empresa o familia. Debemos por tanto **permanecer alerta y protegernos ante el phishing en Internet**. A veces no es una tarea sencilla, ya que **los ataques siempre que buscan explotar las debilidades de la población con métodos cada vez más ingeniosos**. Esperamos que con estos consejos estés mejor preparado para rechazar cualquier correo electrónico SMS o notificación. Ante la más mínima sospecha de un posible ataque, realiza todas las comprobaciones y tómate tu tiempo para estar seguro de no estar cayendo en sus trampas. 

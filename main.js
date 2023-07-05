@@ -1,7 +1,7 @@
 const { app, BrowserWindow, ipcMain } = require('electron')
 const path = require('path');
 const { convertToHTML } = require('./modules/markdown');
-
+const { saveToFile, getMarkdown } = require('./modules/storage');
 
 const createWindow = () => {
   const win = new BrowserWindow({
@@ -16,6 +16,8 @@ const createWindow = () => {
 }
 
 ipcMain.handle('convertToHTML', convertToHTML);
+ipcMain.handle('saveToFile', saveToFile);
+ipcMain.handle('getMarkdown', getMarkdown);
 
 app.whenReady().then(createWindow);
 

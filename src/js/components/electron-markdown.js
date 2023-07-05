@@ -64,7 +64,13 @@ export class ElectronMarkdown extends FormMixin(LitElement) {
   }
 
   firstUpdated() {
+    console.log('startonmg');
     this.editor = this.shadowRoot.getElementById('editor');
+    this.saveInterval = window.setInterval(this.saveToFile.bind(this), 10000);
+    getMarkdown().then( text => {
+      console.log('text es', text);
+      this.editor.setText(text);
+    });
   }
 
   render() {
@@ -107,5 +113,9 @@ export class ElectronMarkdown extends FormMixin(LitElement) {
     doConvertToHTML(this.data.markdown).then(result => this.html = result);
   }
   
+  saveToFile() {
+    console.log('hola');
+    saveToFile(this.data.markdown)
+  }
 }
 customElements.define('electron-markdown', ElectronMarkdown);
