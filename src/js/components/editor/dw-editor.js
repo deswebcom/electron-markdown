@@ -303,7 +303,7 @@ class DwEditor extends FormFieldMixin(LitElement) {
     });
     this.editor.commands.addCommand({
         name: 'code block',
-        bindKey: {win: 'Ctrl-Shift-c',  mac: 'Command-Shift-c'},
+        bindKey: {win: 'Ctrl-Shift-k',  mac: 'Command-Shift-k'},
         exec: (editor) => {
             this.wrapLines('```');
         },
@@ -311,7 +311,7 @@ class DwEditor extends FormFieldMixin(LitElement) {
     });
     this.editor.commands.addCommand({
         name: 'code inline',
-        bindKey: {win: 'Ctrl-c',  mac: 'Command-c'},
+        bindKey: {win: 'Ctrl-k',  mac: 'Command-k'},
         exec: (editor) => {
             this.doWrap('`');
         },
