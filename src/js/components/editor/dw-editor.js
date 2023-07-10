@@ -2,7 +2,7 @@ import { LitElement, html, css } from 'lit';
 import { FormFieldMixin } from '../../mixins/form-field-mixin'
 import {formStyles} from '../../styles/form-styles';
 import './dw-editor-toolbar';
-
+import '@dile/dile-toast/dile-toast'
 //import '@intcreator/markdown-element';
 
 /**
@@ -60,6 +60,13 @@ class DwEditor extends FormFieldMixin(LitElement) {
     `;
   }
 
+  static get properties() {
+    return {
+      content: { type: String },
+      name: { type: String },
+    };
+  }
+
   constructor() {
     super();
     this.content = '';
@@ -69,12 +76,6 @@ class DwEditor extends FormFieldMixin(LitElement) {
     this.editor.session.setMode("ace/mode/markdown");
     this.editor.on('change', this.changeHandler);
     this.addEditorKeybindings();
-  }
-  static get properties() {
-    return {
-      content: { type: String },
-      name: { type: String },
-    };
   }
 
   connectedCallback() {

@@ -19,19 +19,20 @@
   "author": "Miguel Angel Alvarez",
   "license": "MIT",
   "devDependencies": {
+    "@dile/dile-pages": "^2.1.0",
+    "@dile/dile-tabs": "^3.0.5",
     "@electron-forge/cli": "^6.1.1",
     "@electron-forge/maker-deb": "^6.1.1",
     "@electron-forge/maker-rpm": "^6.1.1",
     "@electron-forge/maker-squirrel": "^6.1.1",
     "@electron-forge/maker-zip": "^6.1.1",
     "electron": "^24.3.1",
-    "webpack": "^5.83.1",
-    "webpack-cli": "^5.1.1",
     "lit": "^2.7.4",
-    "@dile/dile-pages": "^2.1.0",
-    "@dile/dile-tabs": "^3.0.5"
+    "webpack": "^5.83.1",
+    "webpack-cli": "^5.1.1"
   },
   "dependencies": {
+    "@dile/dile-toast": "^2.0.5",
     "electron-squirrel-startup": "^1.0.0",
     "markdown-it": "^13.0.1"
   }

@@ -65,6 +65,7 @@ export class ElectronMarkdown extends FormMixin(LitElement) {
 
   firstUpdated() {
     console.log('startonmg');
+    this.myToast = this.shadowRoot.getElementById('myToast');
     this.editor = this.shadowRoot.getElementById('editor');
     this.saveInterval = window.setInterval(this.saveToFile.bind(this), 10000);
     getMarkdown()
@@ -73,12 +74,10 @@ export class ElectronMarkdown extends FormMixin(LitElement) {
         this.editor.setText(text);
       })
       .catch(filepath => {
-        let el = document.createElement('p');
-        el.textContent = filepath;
-        document.body.append(el);
+        this.errorFeedback(filepath);
       }) ;
   }
-
+  
   render() {
     return html`
       <nav>
@@ -110,6 +109,7 @@ export class ElectronMarkdown extends FormMixin(LitElement) {
           </div>
         </section>
       </dile-pages>
+      <dile-toast id="myToast" duration="5000"></dile-toast>
     `;
   }
 
@@ -122,6 +122,10 @@ export class ElectronMarkdown extends FormMixin(LitElement) {
   saveToFile() {
     console.log('hola');
     saveToFile(this.data.markdown)
+  }
+
+  errorFeedback(msg) {
+    this.myToast.open(msg, 'error')
   }
 }
 customElements.define('electron-markdown', ElectronMarkdown);
