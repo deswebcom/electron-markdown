@@ -68,6 +68,7 @@ class DwEditor extends FormFieldMixin(LitElement) {
     this.editor = window.dw.editor;
     this.editor.session.setMode("ace/mode/markdown");
     this.editor.on('change', this.changeHandler);
+    this.addEditorKeybindings();
   }
   static get properties() {
     return {
@@ -105,7 +106,7 @@ class DwEditor extends FormFieldMixin(LitElement) {
         this.doWrap('*');
         break;
       case 'heading':
-        this.doHeading();
+        this.doHeading(1);
         break;
       case 'list':
         this.doLines('- ');
@@ -175,9 +176,14 @@ class DwEditor extends FormFieldMixin(LitElement) {
     this.getDocument().replace(this.getRange(), tag + this.getTextRange() + tag );
   }
 
-  doHeading() {
+  doHeading(level = 1) {
+    let heading = '';
+    for(let i = 1; i <= level; i++) {
+      heading += '#';
+    }
+    console.log(heading);
     var lineRange = this.getSelection().getLineRange();
-    this.getDocument().replace(lineRange, '# ' + this.getTextOtherRange(lineRange));        
+    this.getDocument().replace(lineRange, heading + ' ' + this.getTextOtherRange(lineRange));        
   }
 
   wrapLines(tag) {
@@ -227,6 +233,89 @@ class DwEditor extends FormFieldMixin(LitElement) {
     var document = this.getDocument();
     var range = this.getRange();
     document.replace(range, `[` + this.getTextRange() +`]()`);
+  }
+
+  addEditorKeybindings() {
+    this.editor.commands.addCommand({
+        name: 'bold',
+        bindKey: {win: 'Ctrl-b',  mac: 'Command-b'},
+        exec: (editor) => {
+            this.doWrap('**');
+        },
+        readOnly: false,
+    });
+    this.editor.commands.addCommand({
+        name: 'italic',
+        bindKey: {win: 'Ctrl-i',  mac: 'Command-i'},
+        exec: (editor) => {
+            this.doWrap('*');
+        },
+        readOnly: false,
+    });
+    this.editor.commands.addCommand({
+        name: 'h1',
+        bindKey: {win: 'Ctrl-1',  mac: 'Command-1'},
+        exec: (editor) => {
+            this.doHeading(1);
+        },
+        readOnly: false,
+    });
+    this.editor.commands.addCommand({
+        name: 'h2',
+        bindKey: {win: 'Ctrl-2',  mac: 'Command-2'},
+        exec: (editor) => {
+            this.doHeading(2);
+        },
+        readOnly: false,
+    });
+    this.editor.commands.addCommand({
+        name: 'h3',
+        bindKey: {win: 'Ctrl-3',  mac: 'Command-3'},
+        exec: (editor) => {
+            this.doHeading(3);
+        },
+        readOnly: false,
+    });
+    this.editor.commands.addCommand({
+        name: 'h4',
+        bindKey: {win: 'Ctrl-4',  mac: 'Command-4'},
+        exec: (editor) => {
+            this.doHeading(4);
+        },
+        readOnly: false,
+    });
+    this.editor.commands.addCommand({
+        name: 'link',
+        bindKey: {win: 'Ctrl-l',  mac: 'Command-l'},
+        exec: (editor) => {
+            this.doLink();
+        },
+        readOnly: false,
+    });
+    this.editor.commands.addCommand({
+        name: 'list',
+        bindKey: {win: 'Ctrl-u',  mac: 'Command-u'},
+        exec: (editor) => {
+            this.this.doLines('- ');
+        },
+        readOnly: false,
+    });
+    this.editor.commands.addCommand({
+        name: 'code block',
+        bindKey: {win: 'Ctrl-Shift-c',  mac: 'Command-Shift-c'},
+        exec: (editor) => {
+            this.wrapLines('```');
+        },
+        readOnly: false,
+    });
+    this.editor.commands.addCommand({
+        name: 'code inline',
+        bindKey: {win: 'Ctrl-c',  mac: 'Command-c'},
+        exec: (editor) => {
+            this.doWrap('`');
+        },
+        readOnly: false,
+    });
   }
 }
 
