@@ -212,7 +212,7 @@
       }
       
       
-    `];static get properties(){return{data:{type:Object},html:{type:String}}}constructor(){super(),this.data={markdown:""}}firstUpdated(){console.log("startonmg"),this.editor=this.shadowRoot.getElementById("editor"),this.saveInterval=window.setInterval(this.saveToFile.bind(this),1e4),getMarkdown().then((t=>{console.log("text es",t),this.editor.setText(t)}))}render(){return R`
+    `];static get properties(){return{data:{type:Object},html:{type:String}}}constructor(){super(),this.data={markdown:""}}firstUpdated(){console.log("startonmg"),this.editor=this.shadowRoot.getElementById("editor"),this.saveInterval=window.setInterval(this.saveToFile.bind(this),1e4),getMarkdown().then((t=>{console.log("text es",t),this.editor.setText(t)})).catch((t=>{let e=document.createElement("p");e.textContent=t,document.body.append(e)}))}render(){return R`
       <nav>
         <dile-tabs 
           selected="markdown" 

@@ -1,74 +1,90 @@
-En los últimos artículos hemos abordado distintos aspectos del [ciclo de vida de los componentes Lit](https://desarrolloweb.com/articulos/ciclo-vida-componentes-lit). Hemos aprendido diversos métodos interesantes, pero no hemos hablado mucho de **cómo controlar cuándo Lit da una propiedad por cambiada o no**.
+En pasados artículos del [Manual de Javascript](https://desarrolloweb.com/manuales/manual-javascript.html) hemos conocido la [estructura de array](https://desarrolloweb.com/articulos/630.php) y hemos visto que nos permite almacenar múltiples datos a los que accedemos mediante su índice numérico.
 
-De manera  predeterminada, **cada vez que el valor de la propiedad cambia**, porque por ejemplo se haya asignado un valor nuevo, Lit ejecuta todo el [ciclo de vida relacionado con esa propiedad](https://desarrolloweb.com/articulos/ciclo-vida-propiedades-componentes-lit), que generalmente **desencadena en la actualización del template**, mostrando el valor del nuevo dato. Este es el comportamiento que hemos experimentado hasta el momento.
+A lo largo de los diversos artículos se han planteado numerosos ejemplos para iterar sobre los elementos de los arrays con bucles de los típicos de toda la vida, como el bucle for. Sin embargo, existe una manera de realizar recorridos sobre arrays en Javascript que nos permite otras ventajas, como una mejor legibilidad del código. Así que vamos a ponernos manos a la obra y **conocer el método forEach de los arrays en Javascript para realizar recorridos a sus elementos**.
 
-Sin embargo, en este artículo vamos a aprender cómo controlar los cambios de las propiedades para **definir por nuestra cuenta cuándo Lit debe dar una propiedad por cambiada y cuándo actualizar el template del componente**. Para ello usaremos una configuración de las propiedades llamada "```hasChanged```".
+## Qué es forEach
 
-## Ciclo de updates reactivo
+JavaScript ofrece una variedad de métodos incorporados sobre los arrays que facilitan tareas frecuentes que podemos realizar con ellos, como encontrar un elemento, filtrar el array y mucho más. 
 
-En la documentación de Lit existe un apartado específico llamado "[Reactive update cycle](https://lit.dev/docs/components/lifecycle/#reactive-update-cycle)"  donde nos explica **cómo es el ciclo de vida de las propiedades y cómo pueden o no desencadenarse los cambios en el template**.
+El método `forEach` de los arrays se encarga de ejecutar una función específica para cada elemento de un array. Por tanto, **no podemos decir que sea exactamente un bucle**, sino un mecanismo de alto nivel para **realizar un comportamiento por cada uno de los elementos de un array**.
 
-Allí encontraremos un diagrama explicativo con los estados sobre los que pasa el componente ante el cambio de propiedades. Puedes encontrar allí informaciones detalladas y muy técnicas, pero creo que todo se puede resumir mejor en estos puntos que vienen a expresar el flujo de cambios y estados:
+Al final, podemos entenderlo como un medio de recorrer los elementos del array y hacer algo para cada uno de ellos. Ese algo lo expresaremos mediante una función que enviaremos al bucle `forEach` como parámetro.
 
-- **Se produce un cambio en la propiedad** (este puede venir porque se haya cambiado un atributo en la etiqueta Host del componente, porque se esté bindeando un dato que ha cambiado o porque dentro del componente se haya modificado el valor de la propiedad).
-- **Se ejecuta un método de la propiedad llamado "```hasChanged()```"**, el cual tiene como responsabilidad decir si ese cambio debe o no desencadenar la actualización del template.
-- **Si se da por modificada la propiedad, entonces se ejecuta un método de Lit llamado ```requestUpdate()``` que se encarga de asegurarse de ejecutar los procesos para actualizar el template**.
-
-> El método ```requestUpdate()``` lo podemos invocar nosotros mismos y puede tener cierta utilidad como veremos más adelante en otros artículos.
-
-## Método hasChanged() de la propiedad
-
-Igual que existen las configuraciones de la propiedad como "```type```" o "```reflect```" que hemos estudiado con detalle en otros capítulos del [Manual de Lit](https://desarrolloweb.com/manuales/manual-lit), podemos encontrar otra configuración llamada  "```hasChanged```", que en este caso se debe alimentar con una función.
-
-La función que asignemos a ```hasChanged``` se encargará de decidir programáticamente **cuándo el cambio del valor de una propiedad debe desencadenar una actualización del template**. De manera predeterminada ese metodo realiza una comprobación estricta del valor y el tipo:
+La sintaxis del método `forEach()` es la siguiente:
 
 ```javascript
-newVal !== oldVal
+array.forEach(function(valorActual, indice, esteArray), thisValue)
 ```
 
-Si esa expresión da positivo (porque es distinto el valor o el tipo del dato), entonces se desencadena la actualización del template.
+## Parámetros admitidos por forEach()
 
-Nosotros podemos, a la hora de declarar las propiedades, suministrar un código distinto para hacer la comprobación del cambio y así decidir si una modificación del valor de la propiedad debe producir un cambio en el template.
+La función `forEach()` acepta dos parámetros:
 
-Para ello simplemente declaramos el método `hasChanged` y devolvemos un boleano:
+- Una función Callback: con el comportamiento que se ejecutará para cada elemento del array.
+- Un segundo parámetro, opcional, que permite indicar el valor que tendrá la variable "this" dentro de la función.
 
-- Si devolvemos true, indica que hubo un cambio en la propiedad relevante y que se debe ejecutar la actualización del template.
-- Si devuelve false, entonces no se producirá ningún proceso para actualizar la vista del componente.
+Además, la función callback, que debemos enviar como primer parámetro de manera obligatoria, toma tres argumentos:
 
-## Ejemplo con hasChanged en una propiedad
+- valorActual: es el valor actual del elemento en el array en el recorrido
+- indice: el índice del array que tiene el valor actual
+- esteArray: el array completo sobre el que se está iterando
 
-Vamos a mostrar un ejemplo de uso del método hasChanged en una propiedad. Para ello modificaremos uno de los componentes creados anteriormente. En este caso vamos a trabajar con el componente ```dw-counter```, que estuvimos desarrollando en el artículo C[ambiar propiedades como respuesta a eventos en Lit](https://desarrolloweb.com/articulos/cambiar-propiedades-eventos-lit).  
+**La función callback se ejecutará una vez por cada elemento del array**. En ella no se requiere que se indiquen todos los parámetros, sino solamente los que necesitemos. Lo general es usar al menos el primer parámetro porque usualmente querremos hacer algo con el elemento actual, pero muchas veces necesitamos otros datos como por ejemplo el índice, que también nos proporciona.
 
-Nuestro objetivo es bien simple, no muy operacional pero suficiente para probar el funcionamiento de ```hasChanged()```. Consiste en verificar el valor de la propiedad "counter".
+## Ejemplos de recorrido forEach en Javascript
 
-- Si el valor es múltiplo de 5, entonces se actualizará el template
-- Si el valor no es múltiplo de 5, entonces el template no se actualizará.
-
-Para ello vamos a definir la propiedad con este código:
+Vamos a ver un ejemplo sobre cómo se usa el método `forEach` sobre un array. Supongamos que tenemos un array de números y queremos imprimir cada número en la consola, algo muy sencillo. Aquí es cómo lo haríamos con `forEach`:
 
 ```javascript
-static properties = {
-    counter: { 
-        type: Number,
-        hasChanged(newVal, oldVal) {
-            console.log(`Cambió "counter" valor antiguo ${oldVal}, nuevo ${newVal}`);
-            return newVal % 5 == 0;
-        },
-    },
-}
+let numeros = [10, 20, 30, 40, 50];
+numeros.forEach(function(numero) {
+    console.log(numero);
+});
 ```
 
-Gracias a la definición del método hasChanged en la configuración de la propiedad, cada vez que cambie el contador se ejecutará el método.
-En el método hasChanged recibimos el valor antiguo y el nuevo como parámetros
-Si el valor nuevo es múltiplo de 5 devolvemos true
-Si el valor nuevo no es múltiplo de 5 devolvemos false.
+En este caso, forEach está recorriendo cada elemento del array numeros y está pasando cada uno de los valores a la función callback. La función callback se ejecutará tantas veces como las necesarias hasta acabar el array, haciendo la impresión de su valor en la consola.
 
-Si pones en marcha el componente observarás que ahora solamente actualiza el template en los casos que nosotros hemos definido. Es decir, pulsas varias veces el botón pero solamente se mostrarán valores del contador nuevos cuando éstos son múltiplos de 5. Pero sin embargo, debe quedar claro que la propiedad siempre cambia!! que no se actualice el template no quiere decir que internamente la propiedad no esté cambiando de valor, simplemente hemos decidido que ese cambio no es relevante, al menos no lo suficiente como para desencadenarse una actualización del template.
+Ahora vamos a ver un ejemplo un poco más elaborado en el que queremos mostrar un listado de opciones en un supuesto menú con el índice que ocupa cada una en el array. Pero no queremos la opción empezando en cero como hacen los índices normales, sino empezando en uno.
 
-Gracias al console.log() que hay dentro del método hasChanged() queda patente que sí que se está actualizando la propiedad, solo que no siempre cambia la vista del contador.
+Además, para este ejemplo vamos a usar una [función flecha de Javascript](https://desarrolloweb.com/articulos/arrow-functions-es6.html), para que veamos que también podemos alimentar el método forEach con este tipo de funciones, lo que nos dará como resultado un código bastante más compacto:
 
-Conclusión
+```javascript
+let opciones = ['Abrir', 'Guardar', 'Cerrar'];
+console.log('Elige una opción');
+opciones.forEach( (opcion, index) => console.log(`${index + 1}: ${opcion}`));
+```
 
-Con esto hemos visto la configuración hasChanged de las propiedades de componentes. Ya la habíamos mencionado anteriormente, pero nos quedaba por mostrar su funcionamiento con ejemplos. 
+Por supuesto, podemos tener arrays más complejos, donde cada uno de sus elementos sea un objeto y los podemos recorrer fácilmente haciendo cosas con cada uno de esos objetos.
 
-La verdad no resulta demasiado frecuente el uso de esta configuración, pero está ahí para cuando la puedas necesitar. No obstante, nos ha dado pie a conocer un poco más algunos aspectos del ciclo de vida de las actualizaciones de los templates de los componentes Lit. Más adelante veremos otros asuntos relacionados con este ciclo.
+Supongamos que tenemos un array de objetos, donde cada objeto representa un país con las propiedades: `nombre`, `capital` y `poblacion`, para ver un recorrido `forEach` que nos permita  imprimir la información de cada país en la consola:
+
+```javascript
+let paises = [
+    { nombre: 'España', capital: 'Madrid', poblacion: 48000000 },
+    { nombre: 'Francia', capital: 'París', poblacion: 70000000 },
+    { nombre: 'Alemania', capital: 'Berlín', poblacion: 40000000 },
+];
+
+paises.forEach(function(country) {
+    console.log(`El país ${country.nombre} tiene como capital ${country.capital} y población es de ${country.poblacion}`);
+});
+```
+
+Este código imprimirá una línea para cada uno de los paises en la consola. En esa funciona mostraremos el nombre del país, su capital y su población. La función `forEach` llama a la función callback una vez para cada objeto que hay en el array, que encontrarnos en el parámetro `pais`.
+
+## Beneficios de usar forEach
+
+Ahora vamos a ver algunas de las ventajas que encuentras al usar forEach sobre otros métodos para recorrer un array:
+
+- **Claridad y legibilidad**: El uso de `forEach` puede hacer que el código sea más claro y fácil de leer. Es un poco más semántico, ya que se expresa con el nombre de un método y nos dispensa de especificar variables locales para tener que usarlas de índices para poder acceder a los elementos del array.
+- **Evita errores comunes**: `forEach` maneja automáticamente la iteración sobre el array, por lo que es imposible equivocarse al manejar los índices o cometer fallos que nos lleven a meternos en un bucle infinito.
+- **Encapsulamiento de lógica**: `forEach` permite encapsular la lógica de procesamiento de los elementos del array en una función. Habitualmente esa función solo la queremos expresar una única vez, por lo que usamos muy comúnmente funciones anónimas, pero nada nos impide que esa lógica la tengamos en una función con nombre que podemos usar en repetidas ocasiones, o incluso suministrar esa función con un método de un objeto.
+
+## Algunas limitaciones del método forEach para iteraciones sobre arrays
+
+Aunque `forEach` es muy útil y práctico, también queremos señalar algunas limitaciones a la hora de usarlo en los programas.
+
+- Este modelo de bucle **no se puede interrumpir**: como sabes, existe la instrucción break que podemos ejecutar dentro de un bucle tradicional, como for o while, sin embargo, esta instrucción no la puedes usar para interrumpir un bucle `forEach`.
+- **No encaja con funciones asíncronas**: `forEach` no espera a que las promesas se resuelvan antes de pasar al siguiente elemento del array, por lo que no podemos usarlo si para cada uno de los elementos necesitamos esperar a que se realice un comportamiento asíncrono. En este caso sería más adecuado pensar en usar el método map creando todos los comportamientos en un [Promise.all](https://desarrolloweb.com/articulos/promesas-javascript-secuencia-paralelo), o usar un bucle for...of con async / await.
+
+

@@ -67,10 +67,16 @@ export class ElectronMarkdown extends FormMixin(LitElement) {
     console.log('startonmg');
     this.editor = this.shadowRoot.getElementById('editor');
     this.saveInterval = window.setInterval(this.saveToFile.bind(this), 10000);
-    getMarkdown().then( text => {
-      console.log('text es', text);
-      this.editor.setText(text);
-    });
+    getMarkdown()
+      .then( text => {
+        console.log('text es', text);
+        this.editor.setText(text);
+      })
+      .catch(filepath => {
+        let el = document.createElement('p');
+        el.textContent = filepath;
+        document.body.append(el);
+      }) ;
   }
 
   render() {
